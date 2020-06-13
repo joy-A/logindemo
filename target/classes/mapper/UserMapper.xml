@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.login.dao.UserDao">
+	<resultMap id="entity" type="com.login.pojo.User">
+		<result column="info" property="info" typeHandler="com.login.common.config.handler.MySqlJsonHandler"></result>
+
+	</resultMap>
+
+	<select id="selectByAId" resultType="com.login.pojo.User">
+	SELECT uid, info->'$.name', info->'$.sex', info->'$.age' FROM u_info as ui left join u_account as ac on ui.uid=ac.aid where ac.aid=#{aid}
+	</select>
+</mapper>
