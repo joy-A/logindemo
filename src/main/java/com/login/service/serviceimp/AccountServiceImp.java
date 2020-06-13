@@ -55,7 +55,11 @@ public class AccountServiceImp implements AccountService {
         return null;
     }
 
+    @Override
+    public List<Account> findAll() {
 
+        return accountDao.findAll();
+    }
 
 
 }

@@ -12,4 +12,8 @@ import java.util.List;
 @Mapper
 public interface UserDao extends BaseMapper<User> {
     public List<User> selectByAId(@Param("aid") Integer aid);
+    @Select("select * from u_info")
+    public List<User> findAllU();
+
+    public int insertUinfoByAid();
 }

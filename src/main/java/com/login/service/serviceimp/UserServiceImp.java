@@ -20,4 +20,9 @@ public class UserServiceImp implements UserService {
         userDao.selectByAId(aid);
         return userDao.selectByAId(aid);
     }
+
+    @Override
+    public List<User> findAllU() {
+        return userDao.findAllU();
+    }
 }

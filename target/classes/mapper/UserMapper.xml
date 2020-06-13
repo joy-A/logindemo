@@ -9,6 +9,6 @@
 	</resultMap>
 
 	<select id="selectByAId" resultType="com.login.pojo.User">
-	SELECT uid, info->'$.name', info->'$.sex', info->'$.age' FROM u_info as ui left join u_account as ac on ui.uid=ac.aid where ac.aid=#{aid}
+	SELECT ui.* FROM u_info as ui left join u_account as ac on ui.uid=ac.aid where ac.aid=#{aid}
 	</select>
 </mapper>

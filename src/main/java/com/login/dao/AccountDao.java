@@ -1,5 +1,6 @@
 package com.login.dao;
 
+import com.baomidou.mybatisplus.core.conditions.Wrapper;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.login.pojo.Account;
 import com.login.pojo.User;
@@ -20,7 +21,6 @@ public interface AccountDao extends BaseMapper<Account> {
     public List<Account> findByUsername(@Param("username")String username);
   //  @Select("select passwd from u_account where username=#{username}")
     public String findPasswordByU(@Param("username")String username,String passwd);
-
-
-
+    @Select("select * from u_account")
+    public List<Account> findAll();
 }

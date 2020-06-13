@@ -20,4 +20,6 @@ public interface AccountService {
     //@Select("select passwd from u_account where username=#{username}")
     public String findPasswordByU(@Param("username")String username,String passwd);
 
+    @Select("select * from u_account")
+    public List<Account> findAll();
 }

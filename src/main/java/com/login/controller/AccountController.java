@@ -28,17 +28,17 @@ public class AccountController {
      * @param type
      * @return
      */
-    @ApiOperation(value="测试数据1", notes="注册账户")
+    @ApiOperation(value="注册", notes="注册账户")
     @PostMapping(value = "/addAccount")
     @ResponseBody
     public JsonResult addAccount(String accountname,String passwd,String type){
         Account account = new Account();
         account.setUsername(accountname).setPasswd(passwd).setType(type);
         int rows = accountService.insert(account);
-        return new JsonResult("注册成功！");
+        return new JsonResult("注册成功！"+account);
     }
 
-    @ApiOperation(value="测试数据3", notes="登录账户")
+    @ApiOperation(value="登录跳转", notes="登录账户")
     @GetMapping("/log")
     public String tologin(){
         return "login";
@@ -48,7 +48,7 @@ public class AccountController {
         return "zc";
     }
 
-
+    @ApiOperation(value="登录", notes="登录账户")
     @GetMapping(value = "/login")
     public String loginAccount(String accountname,String passwd){
         String password = accountService.findPasswordByU(accountname,passwd);
@@ -62,12 +62,19 @@ public class AccountController {
      **@param accountname
      **@return
      */
-    @ApiOperation(value="测试数据2", notes="获取account")
+    @ApiOperation(value="根据用户名查询账户信息", notes="获取account")
     @PostMapping("/getAccountByUname")
     @ResponseBody
     public JsonResult selectAll(String accountname,String passwd){
         List<Account> list =  accountService.findByUsername(accountname);
         System.out.println("获取的信息"+list);
+        return new JsonResult(list);
+    }
+    @ApiOperation("查询所有用户信息")
+    @PostMapping("/findAll")
+    @ResponseBody
+    public JsonResult findAll(){
+        List<Account> list = accountService.findAll();
         return new JsonResult(list);
     }
 

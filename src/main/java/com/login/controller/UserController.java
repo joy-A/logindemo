@@ -24,12 +24,20 @@ public class UserController {
     @Autowired
     private UserService userService;
     @ResponseBody
-    @PostMapping("/selectUserByaid")
+    @GetMapping("/selectUserByaid")
     public JsonResult selectByAid(Integer aid){
         System.out.println(aid);
         List<User> list = userService.selectByAId(aid);
         System.out.println(list);
         return new JsonResult(list);
     }
+    @ApiOperation("查询所有用户信息")
+    @PostMapping("/findAllU")
+    @ResponseBody
+    public JsonResult findAllU(){
+        List<User> list = userService.findAllU();
+        return new JsonResult(list);
+    }
+
 }
 
