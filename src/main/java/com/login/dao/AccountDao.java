@@ -20,6 +20,7 @@ public interface AccountDao extends BaseMapper<Account> {
    // @Select("select * from u_account where username=#{username}")
     public List<Account> findByUsername(@Param("username")String username);
   //  @Select("select passwd from u_account where username=#{username}")
+  public Account findByUsername1(@Param("username")String username);
     public String findPasswordByU(@Param("username")String username,String passwd);
     @Select("select * from u_account")
     public List<Account> findAll();

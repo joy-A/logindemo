@@ -45,6 +45,11 @@ public class AccountServiceImp implements AccountService {
     }
 
     @Override
+    public Account findByUsername1(String username) {
+        return accountDao.findByUsername1(username);
+    }
+
+    @Override
     public String findPasswordByU(String username, String passwd) {
         String password = accountDao.findPasswordByU(username,passwd);
         if(passwd==null||passwd==""){
@@ -52,7 +57,7 @@ public class AccountServiceImp implements AccountService {
         }if(!passwd.equals(password)){
             throw new MyServiceException("密码错误！");
         }
-        return null;
+        return password;
     }
 
     @Override

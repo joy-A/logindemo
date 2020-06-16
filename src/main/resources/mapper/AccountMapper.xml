@@ -8,6 +8,11 @@
 	select * from u_account where username=#{username}
 	</select>
 
+	<select id="findByUsername1" resultType="com.login.pojo.Account">
+	select * from u_account where username=#{username}
+	</select>
+
+
 	<select id="findPasswordByU" resultType="com.login.pojo.Account">
 		select passwd from u_account where username=#{username}
 
@@ -15,5 +20,4 @@
 	<select id="findByUserInfo" resultType="com.login.pojo.Account">
 		select ac.* from u_info as ui right join u_account as ac on ui.id=ac.aid where info->'$.name'=#{username} and info->'$.sex'=#{sex} and info->'$.age'=#{age}
 	</select>
-
 </mapper>
